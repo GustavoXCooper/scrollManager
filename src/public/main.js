@@ -94,8 +94,9 @@ const displayScrolls = async () => {
         if (response.ok) {
             const result = await response.json()
             const scrolls = result.scrolls
+            console.log(scrolls)
+            listScroll.innerHTML = ''
             scrolls.forEach(scroll => {
-                listScroll.innerHTML = '';
                 listScroll.innerHTML += createScrollDisplay(scroll.id, scroll.pm, scroll.cd)
             }) 
             console.log('Resposta do servidor:', result)
@@ -109,13 +110,37 @@ const displayScrolls = async () => {
 
 const createScrollDisplay = (name, pm, cd) => {
     if(name) {
-        const liId = name.split(' ').join('-')
+        const spanClass = name.split(' ').join('-')
         const li = `<li>
-                        <p id="${liId}">
+                        <p>
                             Name: ${name} | PM: ${pm} | CD: ${cd}
                         </p>
-                    </li>`
+                    </li>
+                    <span onclick='deleteScroll("${name}")' class="delete-button" id="delete-button-${spanClass}">
+                    delete ${name}
+                    </span>`
+                    
         return li
     }
     return ' '
+}
+
+const deleteScroll = async (name) => {
+    const data = { name }
+    try {
+        const response = await fetch('/delete-scroll', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        });
+        if (response.ok) {
+            console.log('Resposta do servidor:', response)
+        } else {
+            console.log('Erro ao enviar os dados:', response.status)
+        }
+    } catch (error) {
+        console.error('Erro na requisição:', error)
+    }
 }
