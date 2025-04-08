@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <div class="system">
+        <div class="create-scroll">
+            <h1>Create Scroll</h1>
+            <input type="text" placeholder="Nome" class="spell-name">
+            <div id="spell-level">
+                <p>Spell Level: </p>
+                <input class ="level-input" type="number">
+            </div>
+            <button onClick="handleCreateScroll()" id="send-create-scroll">create scroll</button>
+        </div>
+        <div class="list-spells">
+            <h1>Spell List</h1>
+            <ul id="list-spell">
+                
+            </ul>
+            <button onClick="displaySpells()">update</button>
+        </div>
+        <div class="list-scrolls">
+            <h1>Scrolls List</h1>
+            <ul id="list-scroll">
+                
+            </ul>
+            <button onClick="displayScrolls()">update</button>
+        </div>
+    </div>
+    <script src="/main.js"></script>
+</body>
+</html>
