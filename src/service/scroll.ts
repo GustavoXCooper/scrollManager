@@ -24,16 +24,20 @@ export const createScroll = async (name: String, pm: Number) => {
 }
 
 export const deleteScroll = async (name: string) => {
-    const data = fs.readFileSync(path, 'utf-8')
-    const lines = data.split('\n').length
+    const data = fs.readFileSync(path, 'utf-8');
+    const lines = data.trim().split('\n').length;
+    
     // meio gambiarra, mas é só pra funcionar. Futuramente não será usado txt
     if (lines > 1) {
-        const regex = new RegExp(`^\\s*${name},.*\\s*\n`, 'm')
-        const newValue = data.replace(regex, '')
-        fs.writeFileSync(path, newValue, 'utf-8')
+        const regex = new RegExp(`^\\s*${name},.*\\s*\n`, 'm');
+        const newValue = data.replace(regex, '');
+        
+        const cleanedValue = newValue.trimEnd();
+
+        fs.writeFileSync(path, cleanedValue, 'utf-8');
     } else {
-        fs.writeFileSync(path, '', 'utf-8')
+        fs.writeFileSync(path, '', 'utf-8');
     }
 
-    console.log(`Scroll ${name} deletado com sucesso.`)
+    console.log(`Scroll ${name} deletado com sucesso.`);
 }

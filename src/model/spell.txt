@@ -1,2 +1,8 @@
-teste, 1 
-teste, 2
+Armadura Arcana,1
+Conjurar monstro,1
+Arma Mágica,1
+Resistência a Energia,1
+Luz,1
+Queda Suave,1
+Visão Mágica,1
+Curar Ferimentos,1
