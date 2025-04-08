@@ -73,7 +73,7 @@ body {
 }
 
 .list-spells ul  {
-    text-align: center; 
+    text-align: left; 
     padding: 0;
 }
 
@@ -99,7 +99,7 @@ body {
 }
 
 .list-scrolls ul {
-    text-align: center; 
+    text-align: left; 
     padding: 0;
 }
 

@@ -1,4 +1,3 @@
-const sendButton = document.querySelector('.send')
 const spellList = document.querySelector('.list-spells')
 const listSpell = document.querySelector('#list-spell')
 const listScroll = document.querySelector('#list-scroll')
@@ -53,10 +52,11 @@ const displaySpells = async () => {
 }
 
 const handleCreateScroll = () => {
-    const name = document.querySelector('.spell-name').value;
-    const pm = document.querySelector('.level-input').value;
+    const name = document.querySelector('.spell-name')
+    const pm = document.querySelector('.level-input')
 
-    createScroll(name, pm);
+    createScroll(name.value, pm.value)
+    name.value = ''
 };
 
 const createScroll = async (name, pm) => {

@@ -38,6 +38,4 @@ export const deleteScroll = async (name: string) => {
     } else {
         fs.writeFileSync(path, '', 'utf-8');
     }
-
-    console.log(`Scroll ${name} deletado com sucesso.`);
 }
