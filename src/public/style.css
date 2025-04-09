@@ -28,12 +28,29 @@ body {
 
 .create-scroll{
     width: 33vw;
-    height: 100vh;
+    height: 75vh;
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items:center;
+}
+
+.warning{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.warning span{
+    padding: 10px 50px;
+    border-radius: 20px;
+    background-color: #c3c3c3;
+}
+
+.warning h3 {
+    margin: 5px;
 }
 
 .spell-name{

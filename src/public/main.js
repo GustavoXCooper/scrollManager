@@ -1,11 +1,18 @@
 const spellList = document.querySelector('.list-spells')
 const listSpell = document.querySelector('#list-spell')
 const listScroll = document.querySelector('#list-scroll')
+const warning = document.querySelector('.warning span')
+
+document.addEventListener("DOMContentLoaded", function() {
+    displayScrolls()
+    displaySpells()    
+});
+
 
 const createSpellDisplay = (name, pm) =>{
     if(name) {
         const liId = name.split(' ').join('-')
-        const li = `<li onclick='copySpell("${liId}")'>
+        const li = `<li onclick='copySpell("${liId}", "${name}")'>
                         <p id="${liId}">
                             Name: 
                                 <span id="spell-name-${liId}">
@@ -19,9 +26,10 @@ const createSpellDisplay = (name, pm) =>{
     return ' '
 }
 
-const copySpell = async (id) => {
+const copySpell = async (id, name) => {
     const spanContent = document.querySelector(`#spell-name-${id}`).innerHTML
     await navigator.clipboard.writeText(spanContent.trim())
+    await displayWarning(`${name} copiado`)
 }
 
 const displaySpells = async () => {     
@@ -74,6 +82,8 @@ const createScroll = async (name, pm) => {
         if (response.ok) {
             const result = await response.json()
             console.log('Resposta do servidor:', result)
+            displayScrolls()
+            await displayWarning(`${name} criado`)
         } else {
             console.log('Erro ao enviar os dados:', response.status)
         }
@@ -108,6 +118,13 @@ const displayScrolls = async () => {
     }
 }
 
+const displayWarning = async (text) => {
+    warning.style.backgroundColor = 'red';
+    warning.innerHTML = text
+    await new Promise(r => setTimeout(r, 300))
+    warning.style.backgroundColor = '#c3c3c3';
+} 
+
 const createScrollDisplay = (name, pm, cd) => {
     if(name) {
         const spanClass = name.split(' ').join('-')
@@ -137,6 +154,8 @@ const deleteScroll = async (name) => {
         });
         if (response.ok) {
             console.log('Resposta do servidor:', response)
+            displayScrolls()
+            await displayWarning(`${name} excluído`)
         } else {
             console.log('Erro ao enviar os dados:', response.status)
         }
