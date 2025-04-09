@@ -119,7 +119,7 @@ const displayScrolls = async () => {
 }
 
 const displayWarning = async (text) => {
-    warning.style.backgroundColor = 'red';
+    warning.style.backgroundColor = '#c3c3c3';
     warning.innerHTML = text
     await new Promise(r => setTimeout(r, 300))
     warning.style.backgroundColor = '#c3c3c3';
